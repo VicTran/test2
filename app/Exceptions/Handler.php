@@ -44,9 +44,29 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        switch($exception){
+            case $exception instanceof EmailNotProvidedException :
+            if ($request->ajax()) {
+                return response()->json(['error' => 'Email Not Found'], 500);
+            }
+            return response()->view('errors.email-not-provided-exception', compact('exception'), 500);
+            break;
+            case $exception instanceof NoActiveAccountException:
+                if ($request->ajax()) {
+                    return response()->json(['error' => 'No Active Account'], 500);
+                }
+                return response()->view('errors.no-active-account-exception', compact('exception'), 500);
+                break;
+            case $exception instanceof UnauthorizedException:
+                if ($request->ajax()) {
+                    return response()->json(['error' => 'Unauthorized'], 500);
+                }
+                return response()->view('errors.unauthorized-exception', compact('exception'), 500);
+                break;
+            default:
+                return parent::render($request, $exception);
+        }
     }
-
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
