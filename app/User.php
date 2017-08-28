@@ -3,9 +3,9 @@
 namespace App;
 
 use App\Http\AuthTraits\OwnsRecord;
-use App\Http\Requests\UserRequest;
 use App\Traits\HasModelTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,6 +45,16 @@ class User extends Authenticatable
        return  $this->hasOne('App\Profile');
     }
 
+    public function calendar()
+    {
+       return  $this->hasOne('App\calendar');
+    }
+
+    public function timekeeping()
+    {
+       return  $this->hasOne('App\timekeeping');
+    }
+
     //admin 
 
     public function isAdmin()
@@ -62,13 +72,16 @@ class User extends Authenticatable
         return Auth::user()->status_id == 1;
     }
 
-    public function updateUser($user, UserRequest $request)
+    /**
+     * @param $user
+     * @param Request $request
+     */
+    public function updateUser($user, Request $request)
     {
-        return  $user->update(['name'  => $request->name,
-                               'email' => $request->email,
-                               'is_admin' => $request->is_admin,
-                               'status_id' => $request->status_id,
+        // dd($user->email);
+        $user->update(['name'  => $request->name,
+                        'is_admin' => $request->is_admin,
         ]);
-    }    
+    }
 
 }

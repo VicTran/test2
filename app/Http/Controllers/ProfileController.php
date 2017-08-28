@@ -25,7 +25,7 @@ class ProfileController extends Controller
     {
         $profiles = Profile::paginate(10);
         return view('profile.index', [
-                'profiles' => $profile,
+                'profiles' => $profiles,
 
         ]);
     }
@@ -40,6 +40,7 @@ class ProfileController extends Controller
     public function showProfileToUser()
     {
         $profile = Profile::where('user_id', Auth::id())->first();
+        dd(typeOf($profile));
         if( ! $profile){
             return Redirect::route('profile.create');
         }
@@ -73,9 +74,8 @@ class ProfileController extends Controller
         $this->validate($request, ['first_name' => 'required|max:20',
                                    'last_name' => 'required|max:20',
                                    'gender' => 'boolean|required',
-                                   'birthdate' => 'date|required']);
-        $profileExists = $this->profileExists();
-        
+                                   'birthdate' => 'date|required'
+                                   ]);        
         if ($profileExists){
             return Redirect::route('show-profile');
         }

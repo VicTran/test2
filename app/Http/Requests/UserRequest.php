@@ -28,12 +28,9 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->user);
         return [
             'name' => 'required|string|max:20|unique:users,name,' . $this->user,
-            'email' => 'required|email|unique:users,email,'. $this->user,
             'is_admin' => 'boolean',
-            'status_id' => 'in:1,10',            
         ];
     }
 }

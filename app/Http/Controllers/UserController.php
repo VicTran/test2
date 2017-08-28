@@ -5,10 +5,15 @@ use App\Mail\EmailVerificationtoUser;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Mail;
 use Redirect;
 class UserController extends Controller
 {
+
+
+
+
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
@@ -83,7 +88,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->updateUser($user, $request);

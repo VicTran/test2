@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                     You are welcom!
+                    <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
             </div>
         </div>

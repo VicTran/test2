@@ -70,6 +70,7 @@
                     @endif
 
                     <td>{{ $user->email }}</td>
+                    <td><i class="fa fa-check" aria-hidden="true"></i></td>
                     <td>{{ $user->showAdminStatusOf($user) }}</td>
                     <td>{{ $user->showStatusOf($user) }}</td>
                     <td>{{ $user->created_at->format('m-d-Y') }}</td>

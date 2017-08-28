@@ -9,5 +9,4 @@
 @section('content')
 
     <h1>I Am Admin</h1>
-
-    @endsection
+@endsection

@@ -14,4 +14,7 @@
 	.circ:hover{
 		box-shadow: 0 0 0 3px #f00; 
 	}
+	.fa.fa-check {
+    	color: #2cc14f;
+	}
 </style>
