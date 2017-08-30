@@ -23,7 +23,7 @@
         <table class="table table-hover table-bordered table-striped">
 
             <thead>
-            <th>UserName</th>
+            <th>UserId</th>
             <th>Monday</th>
             <th>Tuesday</th>
             <th>Wednesday</th>
@@ -32,22 +32,20 @@
             <th>Saturday</th>
             <th>Sunday</th>
             </thead>
-            <tr> 
-                <td><button type="button" class="btn btn-default">tung</button></td>
-                @foreach($status as $statu )
-                    @if($statu == 2)
-                        <td></td>
-                    @endif
-                    @if($statu == 1)
-                        <td><button type="button" class="btn btn-success">Yes</button></td>
-                    @endif
-                    @if($statu == 0)
-                        <td><button type="button" class="btn btn-danger">No</button></td>
-                    @endif
-
+            <tr>
+            <td>{{ $user_id }}</td>
+            @foreach($statuses as $key => $status )
+                        @if($status == 1)
+                                <td><button type="button" class="btn btn-success">Yes</button></td>
+                        @elseif($status == 0)
+                                <td><button type="button" class="btn btn-danger">No</button></td>
+                        @else
+                            <td></td>
+                        @endif
                 @endforeach
             </tr>
-          
+
+
 
         </table>
 

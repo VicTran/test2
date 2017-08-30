@@ -18,7 +18,7 @@ class CalendarController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin', ['only' => 'index']);
+        $this->middleware('admin', ['except' => 'index']);
     }
 
     /**
@@ -54,6 +54,7 @@ class CalendarController extends Controller
                                     'timework' => 'boolean|required',
                                     'date' => 'date|required']);
         $calendarExists = $this->calendarExists($request->date);
+
         $time = Carbon::yesterday();
         if ($time >= $request->date) {
             alert()->error('Errors!', 'Errors date  ');
@@ -64,6 +65,7 @@ class CalendarController extends Controller
             return Redirect::route('calendar.index');
         }
         $date = Carbon::parse($request->date);
+
         $firstcalendar = calendar::first();
         if (!$firstcalendar) {
             $count = 1;
@@ -75,11 +77,10 @@ class CalendarController extends Controller
                 $count = 1;
             }
         }
-        $calendar = calendar::created(['date' => $request->date,
+        $calendar = calendar::create(['date' => $request->date,
             'status' => $request->timework,
             'user_id' => Auth::user()->id,
             'countweek' => $count]);
-        $calendar->save();
         alert()->success('Congrats!', 'You create new calendar');
         return Redirect::route('calendar.index');
     }

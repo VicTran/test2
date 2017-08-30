@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class timekeeping extends Model
 {
     protected $fillable = [
-    	'status','description','user_id','calendar_id'
+    	'status','description','user_id','calendar_id','date'
     ];
 
     public function user()

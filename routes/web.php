@@ -31,11 +31,18 @@ Route::get('/admin','AdminController@index')->name('admin');
 
 //User 
 Route::resource('user','UserController');
+Route::post('test','UserController@delete')->name('test');
 Route::get('change-new-password/{user}/edit','ChangeNewPasswordController@edit');
 Route::match(array('POST'), "/change-new-password/{id}", array(
       'uses' => 'ChangeNewPasswordController@update',
       'as' => 'ChangeNewPassword.update'
 ));
 
+// Time keeping
+Route::resource('timekeeping','TimeKeepingController');
+Route::get('show-admin-time-keeping','TimeKeepingController@showWithIndex');
+
+//Calendar
+Route::resource('calendar','CalendarController');
 
 

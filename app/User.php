@@ -47,12 +47,12 @@ class User extends Authenticatable
 
     public function calendar()
     {
-       return  $this->hasOne('App\calendar');
+       return  $this->hasMany('App\calendar');
     }
 
     public function timekeeping()
     {
-       return  $this->hasOne('App\timekeeping');
+       return  $this->hasMany('App\timekeeping');
     }
 
     //admin 

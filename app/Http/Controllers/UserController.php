@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Response;
 use Redirect;
 class UserController extends Controller
 {
@@ -103,9 +104,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        $user = User::destroy($id);
         alert()->overlay('Attention!', 'You deleted a user', 'error');
-        return Redirect::route('user.index');
+        return Response::json($user);
+    }
+    public function delete(Request $request){
+        $user_id = $request['user_id'];
+        $user = User::destroy($user_id);
+        return 'ok';
     }
 
 }

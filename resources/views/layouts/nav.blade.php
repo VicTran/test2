@@ -28,15 +28,29 @@
                             <li><a href="/profile">Profiles</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" aria-expanded="false">
+                            Calendar<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/calendar">calendar</a></li>
+                            <li><a href="/calendar/create">create calendar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/show-admin-time-keeping">TimeKeepingsUser</a></li>
 
                 @endif
-                <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                        data-toggle="dropdown" role="button" aria-haspopup="true"
-                                        aria-expanded="false">Content <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/widget">Widgets</a></li>
-                    </ul>
-                </li>
+                @if (Auth::check()&& !Auth::user()->isAdmin())
+                    <li><a href="/calendar">calendar</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                            data-toggle="dropdown" role="button" aria-haspopup="true"
+                                            aria-expanded="false">TimeKeeping <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/timekeeping/create">Create timekeeping</a></li>
+                            <li><a href="/timekeeping">show timekeeping</a></li>
+                        </ul>
+                    </li>
+                @endif
                 @if (Auth::check())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle"
@@ -49,7 +63,7 @@
                             <li><a href="/admin">Admin</a></li>
                             @endif
                             <li><a href="/determine-profile-route">Profile</a></li>
- 
+
                             <li><a href="/settings">Settings</a></li>
                             <li>
                                 <a href="/logout"

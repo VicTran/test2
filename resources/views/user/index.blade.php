@@ -51,7 +51,7 @@
 
             @foreach($users as $user)
 
-                <tr>
+                <tr id="user{{$user->id}}">
                     <td>{{ $user->id }}</td>
                     <td><a href="/user/{{ $user->id }}">{{ $user->name }}</a></td>
                     <td>{{ $user->showAdminStatusOf($user) }}</td>
@@ -65,14 +65,7 @@
 
                     <td>
                         <div class="form-group">
-
-                            <form class="form" role="form" method="POST" action="{{ url('/user/'. $user->id) }}">
-                                    <input type="hidden" name="_method" value="delete">
-                                    {{ csrf_field() }}
-
-                                <input class="btn btn-danger" Onclick="return ConfirmDelete();" type="submit" value="Delete">
-
-                            </form>
+                            <button class="btn btn-danger  btn-delete delete-task" value="{{$user->id}}">Delete</button>
                         </div>
                     </td>
                 </tr>
