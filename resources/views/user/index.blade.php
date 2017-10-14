@@ -13,21 +13,7 @@
         <li class='active'>Users</li>
     </ol>
 
-    @if(Auth::user()->isAdmin())
-    <div class="pull-right">
 
-        <a href="{{ url('/user/create') }}">
-
-            <button type="button" class="btn btn-lg btn-primary">
-
-                Create User
-
-            </button>
-
-        </a>
-
-    </div>
-    @endif
 
     <h2>Users</h2>
 

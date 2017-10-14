@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class CalendarController extends Controller
 {
@@ -51,8 +52,8 @@ class CalendarController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                                    'timework' => 'boolean|required',
-                                    'date' => 'date|required']);
+            'timework' => 'boolean|required',
+            'date' => 'date|required']);
         $calendarExists = $this->calendarExists($request->date);
 
         $time = Carbon::yesterday();

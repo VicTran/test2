@@ -19,6 +19,6 @@ class calendar extends Model
     }
     public function timekeeipng()
     {
-    	return $this->hasOne('App\timekeeipng');
+    	return $this->hasMany('App\timekeeipng');
     }
 }

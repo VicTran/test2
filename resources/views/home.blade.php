@@ -15,4 +15,6 @@
         </div>
     </div>
 </div>
+aa <span class="glyphicon glyphicon-align-justify"></span>
+    @lang('auth.failed');
 @endsection

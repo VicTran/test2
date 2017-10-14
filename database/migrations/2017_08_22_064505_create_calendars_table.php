@@ -15,9 +15,12 @@ class CreateCalendarsTable extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->date('date');
             $table->integer('status');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

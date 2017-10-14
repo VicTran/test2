@@ -17,7 +17,6 @@
         <div id="navbar" class="navbar-collapse collapse pull-right">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
                 @if (Auth::check() && Auth::user()->isAdmin())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -63,9 +62,7 @@
                             <li><a href="/admin">Admin</a></li>
                             @endif
                             <li><a href="/determine-profile-route">Profile</a></li>
-
-                            <li><a href="/settings">Settings</a></li>
-                            <li>
+                                <li>
                                 <a href="/logout"
                                    onclick="event.preventDefault();
                      document.getElementById('logout-form').submit();">

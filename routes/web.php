@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+	       $all = Countries::where('name.common', 'Peru');
+	       dd($all->first()->states->pluck('name'));
+        
     return view('home');
 });
 
